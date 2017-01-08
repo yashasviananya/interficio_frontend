@@ -1,0 +1,9 @@
+.leader-board {
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-bottom: 18px;
+  background-color: #EDE7F6;
+}
+
+.list-item { background: green; }
+.list-item:nth-child(odd) { background: red; }

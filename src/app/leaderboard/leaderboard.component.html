@@ -1,0 +1,14 @@
+<div class = "leader-board">
+      <md-list style = "width:50%">
+        <md-list-item class = "list-item" style = "background-color: #ffffff;" *ngFor="let user of users">
+           <br>
+           <md-divider style = "color: rgba(0, 0, 0, 0.26)"></md-divider>
+           <p md-line>
+             <span style = "color: rgba(0, 0, 0, 0.63)"> {{ user.name }} </span>
+             <span class = "text"> {{ user.score }} </span>
+           </p>
+           <md-divider style = "color: rgba(0, 0, 0, 0.26)"></md-divider>
+           <br>
+        </md-list-item>
+      </md-list>
+    </div>
