@@ -6,6 +6,7 @@ import { routes, navigatableComponents } from './app-routing.module';
 import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HttpModule }    from '@angular/http';
+import { QuestionService } from './question.service';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { HttpModule }    from '@angular/http';
     ...navigatableComponents
   ],
   entryComponents: [ ],
-  providers: [ ],
+  providers: [ QuestionService ],
   bootstrap: [ AppComponent ]
 })
 

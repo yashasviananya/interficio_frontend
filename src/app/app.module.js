@@ -16,6 +16,7 @@ var app_routing_module_1 = require("./app-routing.module");
 var material_1 = require("@angular/material");
 var app_component_1 = require("./app.component");
 var http_1 = require("@angular/http");
+var question_service_1 = require("./question.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,7 +36,7 @@ AppModule = __decorate([
             app_component_1.AppComponent
         ].concat(app_routing_module_1.navigatableComponents),
         entryComponents: [],
-        providers: [],
+        providers: [question_service_1.QuestionService],
         bootstrap: [app_component_1.AppComponent]
     }),
     __metadata("design:paramtypes", [])
