@@ -47,6 +47,7 @@ export class QuestionComponent implements OnInit {
   onAnswerSubmit(form_data, id) {
     this.question_id = id;
     form_data.id = id;
+    console.log(this);
     this.questionService.onAnswerSubmit(form_data)
       .then( data=> {
         if(data.verified) {

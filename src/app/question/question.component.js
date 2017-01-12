@@ -44,6 +44,7 @@ var QuestionComponent = (function () {
         var _this = this;
         this.question_id = id;
         form_data.id = id;
+        console.log(this);
         this.questionService.onAnswerSubmit(form_data)
             .then(function (data) {
             if (data.verified) {

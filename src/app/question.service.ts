@@ -12,6 +12,8 @@ export class QuestionService {
   private getQuestionUrl = config.url + 'api/v1/question/fetchQuestion';
   private answerSubmitUrl = config.url + 'api/v1/question/answerSubmit';
   private storySubmitUrl = config.url + 'api/v1/question/storySubmit';
+  private getScoreUrl = config.url + 'api/v1/question/fetchScore';
+
   private headers = new Headers({'Content-Type': 'application/json'});
 //   private token = localStorage.getItem("token");
 
@@ -52,6 +54,14 @@ export class QuestionService {
     .toPromise()
     .then(res => res.json())
     .catch(this.handleError); 
+  }
+
+  fetchScore(): Promise<any> {
+     return this.http
+    .get(this.getScoreUrl , {headers: this.headers})
+    .toPromise()
+    .then(res => res.json())
+    .catch(this.handleError);   
   }
 }
 
