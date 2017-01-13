@@ -1,83 +1,34 @@
 
-<h3 style = "text-align: center"> Breaking Dead? </h3>
+<p style = "text-align: center" [innerHTML] ="setObj.title"> </p>
 <md-card class = "add-student-card">
   <md-card-content>
-    <p>Walter White, the famous chemistry teacher is found murdered! A note hanging out of the pocket coat of Mr. White read: 
-9-53-8-11/3-3/11-52/4-90/22-11/20-90-39
-Sherlock, the greatest detective in town is called upon to look into this case.
- In no time, he decrypts the code and the students involved in the murder are found! Can YOU be the Sherlock?
-    </p> <br><br>
-    <form #storyForm="ngForm">
+    <p [innerHTML] = "setObj.description"></p> <br>
+    <form #storyForm="ngForm" (ngSubmit)="onStorySubmit(storyForm.value, setObj.id)">
       <md-input placeholder="Answer" name="answer" type = "text" style="width: 100%" required ngModel></md-input>
       <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
         <button md-raised-button color="accent"> Submit </button>
         <!--<button md-raised-button color="warn" style = "margin-left: 10px;"> Hint </button> -->
       </section>
-   </form>
+        <p *ngIf = '!storyVerify' class = "text"> Wrong answer </p>
+    </form>
  </md-card-content>
 </md-card>
 
 <h4> we have some questions for you that will help you in decoding the answer. </h4>
 
-<md-card>
+<md-card *ngFor = "let question of questionObj" style = "margin-top:15px;">
   <md-card-content>
-    <p>  A bevy of Bridesmaids are standing, evenly spaced, in a circle.  Mariah the 7th bridesmaid isA bevy of Bridesmaids are standing,
-     evenly spaced, in a circle.  Mariah the 7th bridesmaid is directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-     directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-   </p>
-    <form #questionForm="ngForm">
-    <div layout = "row" layout-align="center center">
-      <md-input placeholder="Answer" name="answer" type = "text" style="width: 20%" required ngModel></md-input>
-        <button md-raised-button color="warn" style = "margin-left: 20px;"> Submit </button>
-  </div>
+    <p [innerHTML] = "question.description"></p>
+    <form #questionForm="ngForm" (ngSubmit)="onAnswerSubmit(questionForm.value, question.id)">
+      <div layout = "row" layout-align="center center">
+        <md-input placeholder="Answer" name="answer" type = "text" style="width: 20%" required ngModel></md-input>
+          <button md-raised-button color="warn" style = "margin-left: 20px;"> Submit </button>
+      </div>
+      <p [hidden]="verify" *ngIf = 'question.id == question_id && !verify' class = "text"> Wrong answer </p>
     </form>
-</md-card-content>
-</md-card>
-
-<md-card style = "margin-top:10px;">
-  <md-card-content>
-    <p>  A bevy of Bridesmaids are standing, evenly spaced, in a circle.  Mariah the 7th bridesmaid isA bevy of Bridesmaids are standing,
-     evenly spaced, in a circle.  Mariah the 7th bridesmaid is directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-     directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-   </p>
-    <form #questionForm="ngForm">
-    <div layout = "row" layout-align="center center">
-      <md-input placeholder="Answer" name="answer" type = "text" style="width: 20%" required ngModel></md-input>
-        <button md-raised-button color="warn" style = "margin-left: 20px;"> Submit </button>
-  </div>
-    </form>
-</md-card-content>
-</md-card>
-
-<md-card style = "margin-top:10px;"> 
-  <md-card-content>
-    <p>  A bevy of Bridesmaids are standing, evenly spaced, in a circle.  Mariah the 7th bridesmaid isA bevy of Bridesmaids are standing,
-     evenly spaced, in a circle.  Mariah the 7th bridesmaid is directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-     directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-   </p>
-    <form #questionForm="ngForm">
-    <div layout = "row" layout-align="center center">
-      <md-input placeholder="Answer" name="answer" type = "text" style="width: 20%" required ngModel></md-input>
-        <button md-raised-button color="warn" style = "margin-left: 20px;"> Submit </button>
-  </div>
-    </form>
-</md-card-content>
+  </md-card-content>
 </md-card>
 
 
-<md-card style = "margin-top:10px;">
-  <md-card-content>
-    <p>  A bevy of Bridesmaids are standing, evenly spaced, in a circle.  Mariah the 7th bridesmaid isA bevy of Bridesmaids are standing,
-     evenly spaced, in a circle.  Mariah the 7th bridesmaid is directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-     directly opposite to the 18th bridesmaid Lucy. How many bridesmaids are there?
-   </p>
-    <form #questionForm="ngForm">
-    <div layout = "row" layout-align="center center">
-      <md-input placeholder="Answer" name="answer" type = "text" style="width: 20%" required ngModel></md-input>
-        <button md-raised-button color="warn" style = "margin-left: 20px;"> Submit </button>
-  </div>
-    </form>
-</md-card-content>
-</md-card>
 
 

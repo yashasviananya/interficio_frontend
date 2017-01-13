@@ -10,11 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var register_service_1 = require("../register.service");
 var HomeComponent = (function () {
-    function HomeComponent(router) {
+    function HomeComponent(router, registerService) {
         this.router = router;
+        this.registerService = registerService;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.registerService.getUserDetail()
+            .then(function (res) {
+            console.log("res--", res);
+            if (res.not_verified) {
+                _this.router.navigate(['/login']);
+            }
+            else {
+                _this.user_id = res.data.user_id;
+                _this.name = res.data.user_name;
+                // localStorage.setItem('user_id',this.user_id);
+                console.log(_this.user_id, _this.name);
+            }
+        })
+            .catch(function (error) { return console.log("error--", error); });
     };
     return HomeComponent;
 }());

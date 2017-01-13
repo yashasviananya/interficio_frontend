@@ -10,6 +10,10 @@ export class QuestionService {
   constructor(private http: Http) { }
   private getSetUrl = config.url + 'api/v1/question/fetchSet';
   private getQuestionUrl = config.url + 'api/v1/question/fetchQuestion';
+  private answerSubmitUrl = config.url + 'api/v1/question/answerSubmit';
+  private storySubmitUrl = config.url + 'api/v1/question/storySubmit';
+  private getScoreUrl = config.url + 'api/v1/question/fetchScore';
+
   private headers = new Headers({'Content-Type': 'application/json'});
 //   private token = localStorage.getItem("token");
 
@@ -18,20 +22,46 @@ export class QuestionService {
     return Promise.reject(error.message || error);
   }
 
-  getSet() : Promise<any> {
+  fetchSet(user_id) : Promise<any> {
     return this.http
-    .get(this.getSetUrl ,{headers: this.headers})
+    .get(this.getSetUrl + '?user_id=' + user_id ,{headers: this.headers})
     .toPromise()
     .then(res => res.json())
     .catch(this.handleError);
   }
 
-  getQuestion(): Promise<any> {
+  fetchQuestion(): Promise<any> {
     return this.http
     .get(this.getQuestionUrl , {headers: this.headers})
     .toPromise()
     .then(res => res.json())
     .catch(this.handleError);
+  }
+
+  onAnswerSubmit(form_data): Promise<any> {
+    //  console.log(form_data);
+     return this.http
+    .post(this.answerSubmitUrl , JSON.stringify(form_data), {headers: this.headers})
+    .toPromise()
+    .then(res => res.json())
+    .catch(this.handleError); 
+  }
+
+  onStorySubmit(form_data): Promise<any> {
+    console.log(form_data);
+    return this.http
+    .post(this.storySubmitUrl , JSON.stringify(form_data), {headers: this.headers})
+    .toPromise()
+    .then(res => res.json())
+    .catch(this.handleError); 
+  }
+
+  fetchScore(): Promise<any> {
+     return this.http
+    .get(this.getScoreUrl , {headers: this.headers})
+    .toPromise()
+    .then(res => res.json())
+    .catch(this.handleError);   
   }
 }
 
