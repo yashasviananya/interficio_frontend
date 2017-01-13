@@ -3,13 +3,11 @@ import { HomeComponent } from './home/home.component';
 import { InstructionComponent } from './instruction/instruction.component';
 import { QuestionComponent } from './question/question.component';
 import { LeaderBoardComponent } from './leaderboard/leaderboard.component';
-// import { GroupComponent } from './group/group.component';
-// import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-//   { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-//   { path: 'invite', component: RegisterComponent},
   { path: 'home',  component: HomeComponent ,
     children: [
       { path: '', redirectTo: 'instruction'},
@@ -21,11 +19,9 @@ export const routes: Routes = [
 ];
 
 export const navigatableComponents = [
-//   LoginComponent,
+  LoginComponent,
   HomeComponent,
   InstructionComponent,
   QuestionComponent,
   LeaderBoardComponent
-//   NoticeComponent,
-//   RegisterComponent
 ];

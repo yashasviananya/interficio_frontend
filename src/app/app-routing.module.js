@@ -3,12 +3,10 @@ var home_component_1 = require("./home/home.component");
 var instruction_component_1 = require("./instruction/instruction.component");
 var question_component_1 = require("./question/question.component");
 var leaderboard_component_1 = require("./leaderboard/leaderboard.component");
-// import { GroupComponent } from './group/group.component';
-// import { RegisterComponent } from './register/register.component';
+var login_component_1 = require("./login/login.component");
 exports.routes = [
-    //   { path: 'login', component: LoginComponent },
+    { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    //   { path: 'invite', component: RegisterComponent},
     { path: 'home', component: home_component_1.HomeComponent,
         children: [
             { path: '', redirectTo: 'instruction' },
@@ -19,7 +17,7 @@ exports.routes = [
     }
 ];
 exports.navigatableComponents = [
-    //   LoginComponent,
+    login_component_1.LoginComponent,
     home_component_1.HomeComponent,
     instruction_component_1.InstructionComponent,
     question_component_1.QuestionComponent,
