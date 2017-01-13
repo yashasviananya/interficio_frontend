@@ -12,7 +12,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'instruction'},
       { path: 'instruction', component: InstructionComponent},
-      { path: 'question', component: QuestionComponent },
+      { path: 'question/:id', component: QuestionComponent },
       { path: 'leaderboard', component: LeaderBoardComponent }
     ]
   }

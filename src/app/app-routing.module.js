@@ -11,7 +11,7 @@ exports.routes = [
         children: [
             { path: '', redirectTo: 'instruction' },
             { path: 'instruction', component: instruction_component_1.InstructionComponent },
-            { path: 'question', component: question_component_1.QuestionComponent },
+            { path: 'question/:id', component: question_component_1.QuestionComponent },
             { path: 'leaderboard', component: leaderboard_component_1.LeaderBoardComponent }
         ]
     }

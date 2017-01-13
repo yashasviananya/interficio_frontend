@@ -22,9 +22,9 @@ export class QuestionService {
     return Promise.reject(error.message || error);
   }
 
-  fetchSet() : Promise<any> {
+  fetchSet(user_id) : Promise<any> {
     return this.http
-    .get(this.getSetUrl ,{headers: this.headers})
+    .get(this.getSetUrl + '?user_id=' + user_id ,{headers: this.headers})
     .toPromise()
     .then(res => res.json())
     .catch(this.handleError);

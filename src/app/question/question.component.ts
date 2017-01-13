@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router} from '@angular/router';
 import { QuestionService } from '../question.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -18,7 +19,8 @@ export class QuestionComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private route: ActivatedRoute
   ) {}
 
   private setObj = {};
@@ -26,10 +28,16 @@ export class QuestionComponent implements OnInit {
   private verify = true;
   private question_id;
   private storyVerify = true;
+  private user_id: number;
 
   ngOnInit() {
+
+    this.route.params.subscribe(params => {
+       this.user_id = +params['id']; // (+) converts string 'id' to a number
+       console.log('user-iddd',this.user_id);
+    });
     // we will send user_id to find the current set no nd then fetch set and respective ques.
-    this.questionService.fetchSet()
+    this.questionService.fetchSet(this.user_id)
       .then( data=> {
         this.setObj = data;
         // console.log(this.setObj);
@@ -69,6 +77,7 @@ export class QuestionComponent implements OnInit {
     // we will send set id match ans nd if correct increment the set id of corresponding user . nd reload the page 
     // so that fetch set and fetch ques automatically gets updated.
     form_data.id = id;
+    form_data.user_id = this.user_id;
     this.questionService.onStorySubmit(form_data)
       .then( data=> {
         if(data.verified) {

@@ -39,7 +39,8 @@ LeaderBoardComponent = __decorate([
         templateUrl: './leaderboard.component.html',
         styleUrls: ['leaderboard.component.css']
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router,
+        question_service_1.QuestionService])
 ], LeaderBoardComponent);
 exports.LeaderBoardComponent = LeaderBoardComponent;
 //# sourceMappingURL=leaderboard.component.js.map

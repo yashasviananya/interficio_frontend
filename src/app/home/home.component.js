@@ -25,9 +25,10 @@ var HomeComponent = (function () {
                 _this.router.navigate(['/login']);
             }
             else {
-                var user_id = res.data.user_id;
-                var name_1 = res.data.user_name;
-                console.log(user_id, name_1);
+                _this.user_id = res.data.user_id;
+                _this.name = res.data.user_name;
+                // localStorage.setItem('user_id',this.user_id);
+                console.log(_this.user_id, _this.name);
             }
         })
             .catch(function (error) { return console.log("error--", error); });

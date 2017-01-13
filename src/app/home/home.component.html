@@ -1,7 +1,7 @@
   <md-toolbar color="primary" layout="row" layout-align="end start"> 
      <md-list-item class="list-color">
        <a routerLink="instruction"> Instruction </a>
-       <a style = "margin-left: 10px" routerLink="question"> Question </a>
+       <a style = "margin-left: 10px" [routerLink] ="['question', user_id]"> Question </a>
        <a style = "margin-left: 10px" routerLink="leaderboard"> Leaderboard  </a>
      </md-list-item>
     <!--<span class="app-toolbar-filler"></span>-->

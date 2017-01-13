@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
     private registerService: RegisterService
   ) {}
 
+  private user_id;
+  private name;
+
   ngOnInit() {
       this.registerService.getUserDetail()
       .then (res => {
@@ -23,9 +26,10 @@ export class HomeComponent implements OnInit {
         if(res.not_verified) {
           this.router.navigate(['/login']);
         } else {
-          let user_id = res.data.user_id;
-          let name = res.data.user_name;
-          console.log(user_id,name);
+          this.user_id = res.data.user_id;
+          this.name = res.data.user_name;
+          // localStorage.setItem('user_id',this.user_id);
+          console.log(this.user_id,this.name);
         }
 
        })

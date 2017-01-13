@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var question_service_1 = require("../question.service");
+var router_2 = require("@angular/router");
 var QuestionComponent = (function () {
-    function QuestionComponent(router, questionService) {
+    function QuestionComponent(router, questionService, route) {
         this.router = router;
         this.questionService = questionService;
+        this.route = route;
         this.setObj = {};
         this.questionObj = [];
         this.verify = true;
@@ -26,8 +28,12 @@ var QuestionComponent = (function () {
     };
     QuestionComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.user_id = +params['id']; // (+) converts string 'id' to a number
+            console.log('user-iddd', _this.user_id);
+        });
         // we will send user_id to find the current set no nd then fetch set and respective ques.
-        this.questionService.fetchSet()
+        this.questionService.fetchSet(this.user_id)
             .then(function (data) {
             _this.setObj = data;
             // console.log(this.setObj);
@@ -67,6 +73,7 @@ var QuestionComponent = (function () {
         // we will send set id match ans nd if correct increment the set id of corresponding user . nd reload the page 
         // so that fetch set and fetch ques automatically gets updated.
         form_data.id = id;
+        form_data.user_id = this.user_id;
         this.questionService.onStorySubmit(form_data)
             .then(function (data) {
             if (data.verified) {
@@ -89,7 +96,8 @@ QuestionComponent = __decorate([
         styleUrls: ['question.component.css']
     }),
     __metadata("design:paramtypes", [router_1.Router,
-        question_service_1.QuestionService])
+        question_service_1.QuestionService,
+        router_2.ActivatedRoute])
 ], QuestionComponent);
 exports.QuestionComponent = QuestionComponent;
 //# sourceMappingURL=question.component.js.map
