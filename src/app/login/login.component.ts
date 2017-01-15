@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import { Router} from "@angular/router";
 import {RegisterService} from "../register.service";
 
-
 declare const FB:any;
+declare const gapi:any;
 
 @Component({
     moduleId: module.id,
-    selector: 'facebook-login',
-    templateUrl: './login.component.html'
+    selector: 'login',
+    templateUrl: './login.component.html',
+    styleUrls: ['login.component.css']
+
 })
 
 export class LoginComponent implements OnInit {
@@ -19,8 +21,9 @@ constructor(
     ) {}
 
  ngOnInit() {
-        this.fbAsyncInit();
-      }
+   this.fbAsyncInit();
+   this.startApp();
+  }
 
  fbAsyncInit = function() {
   FB.init({
@@ -89,4 +92,27 @@ constructor(
             }
         });
     }
+
+    private googleUser = {};
+
+    startApp = function() {
+    gapi.load('auth2', () => {
+      let auth2 =  gapi.auth2.init({
+        client_id: '101799837649-uk8apkselrnldl7unr1rgsj8b84d2asf.apps.googleusercontent.com'
+      });
+      let element = document.getElementById('google-signin');
+      auth2.attachClickHandler(element, {}, googleUser =>
+       {
+        let signIn_data = {
+          id: googleUser.getBasicProfile().getId(),
+          name: googleUser.getBasicProfile().getName(),
+          email: googleUser.getBasicProfile().getEmail()
+        };
+         this.check(signIn_data);
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+   });
+  }; 
+
 }

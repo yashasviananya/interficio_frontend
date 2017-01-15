@@ -28,13 +28,13 @@ export class QuestionComponent implements OnInit {
   private verify = true;
   private question_id;
   private storyVerify = true;
-  private user_id: number;
+  private user_id;
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-       this.user_id = +params['id']; // (+) converts string 'id' to a number
-       console.log('user-iddd',this.user_id);
+       this.user_id = params['id']; // (+) converts string 'id' to a number
+       console.log('user-idddd',this.user_id);
     });
     // we will send user_id to find the current set no nd then fetch set and respective ques.
     this.questionService.fetchSet(this.user_id)

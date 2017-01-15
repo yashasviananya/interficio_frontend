@@ -15,6 +15,7 @@ var HomeComponent = (function () {
     function HomeComponent(router, registerService) {
         this.router = router;
         this.registerService = registerService;
+        this.header = 'Instruction';
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -22,16 +23,33 @@ var HomeComponent = (function () {
             .then(function (res) {
             console.log("res--", res);
             if (res.not_verified) {
-                _this.router.navigate(['/login']);
+                _this.router.navigate(['login']);
             }
             else {
                 _this.user_id = res.data.user_id;
+                console.log(typeof (_this.user_id));
                 _this.name = res.data.user_name;
                 // localStorage.setItem('user_id',this.user_id);
                 console.log(_this.user_id, _this.name);
             }
         })
             .catch(function (error) { return console.log("error--", error); });
+    };
+    HomeComponent.prototype.logout = function () {
+        console.log('asdf');
+        localStorage.setItem('token', '');
+        this.router.navigate(['/login']);
+    };
+    HomeComponent.prototype.text = function (num) {
+        if (num == 1) {
+            this.header = 'Instruction';
+        }
+        else if (num == 2) {
+            this.header = 'Question';
+            this.router.navigate(['home/question', this.user_id]);
+        }
+        else
+            this.header = 'Leaderboard';
     };
     return HomeComponent;
 }());

@@ -1,9 +1,16 @@
-<md-toolbar color="primary" layout="row" layout-align="end start"> LOGIN PAGE
-</md-toolbar>
-<div layout = "row" layout-align="center center">
-  <div>
-    <button class="btn btn-lg btn-social btn-facebook" style="font-size: 1.5em; margin-top: 80%" (click)="onFacebookLoginClick()">
+
+<div class = "image">
+    <p class = "name"> Interficio </p> 
+    <p class = "tag"> As the night unfolds, so will a web of lies and scandals! </p>
+
+<div layout = "row" layout-align="center center" class = "fb"> 
+    <button class="btn btn-lg btn-social btn-facebook" (click)="onFacebookLoginClick()">
         <i class="fa fa-facebook fa-fw"></i>Sign in with Facebook
     </button>
+</div>
+
+  <div layout = "row" layout-align="center center" class = "google">
+    <a class="btn btn-block btn-social btn-google" id='google-signin'>
+      <span class="fa fa-google"></span>Login with Google </a>
   </div>
 </div>

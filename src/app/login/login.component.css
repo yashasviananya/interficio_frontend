@@ -1,0 +1,47 @@
+.image { 
+  background-image: url("src/assets/img/login1.png"); 
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  height: 45em;
+  overflow: hidden;
+  display: block;
+  
+} 
+
+@font-face {
+  font-family: 'MyWebFont';
+  src:  url('src/assets/skins/lightgray/fonts/heading.woff') format('woff');
+}
+
+.name {
+  font-family: 'MyWebFont', Fallback, sans-serif;
+  color: white;
+  font-size: 90px;
+  letter-spacing: 10px;
+  text-align: end;
+  padding-right: 320px;
+  padding-top: 40px;
+}
+
+.tag {
+   margin-right: 185px;
+   text-align: end;
+   letter-spacing: 1px;
+   font-family: 'MyWebFont', Fallback, sans-serif;
+   font-size: 30px;
+   color: rgb(147, 34, 34);
+}
+
+.fb{
+  padding-left: 350px;
+  padding-top: 80px;
+
+}
+
+.google {
+    width: 19%;
+    float: right;
+    margin-top: 18px;
+    margin-right: 371px;
+
+}

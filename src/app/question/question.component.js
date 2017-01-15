@@ -29,8 +29,8 @@ var QuestionComponent = (function () {
     QuestionComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.user_id = +params['id']; // (+) converts string 'id' to a number
-            console.log('user-iddd', _this.user_id);
+            _this.user_id = params['id']; // (+) converts string 'id' to a number
+            console.log('user-idddd', _this.user_id);
         });
         // we will send user_id to find the current set no nd then fetch set and respective ques.
         this.questionService.fetchSet(this.user_id)

@@ -50,9 +50,30 @@ var LoginComponent = (function () {
                 }
             });
         };
+        this.googleUser = {};
+        this.startApp = function () {
+            var _this = this;
+            gapi.load('auth2', function () {
+                var auth2 = gapi.auth2.init({
+                    client_id: '101799837649-uk8apkselrnldl7unr1rgsj8b84d2asf.apps.googleusercontent.com'
+                });
+                var element = document.getElementById('google-signin');
+                auth2.attachClickHandler(element, {}, function (googleUser) {
+                    var signIn_data = {
+                        id: googleUser.getBasicProfile().getId(),
+                        name: googleUser.getBasicProfile().getName(),
+                        email: googleUser.getBasicProfile().getEmail()
+                    };
+                    _this.check(signIn_data);
+                }, function (error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+            });
+        };
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.fbAsyncInit();
+        this.startApp();
     };
     LoginComponent.prototype.check = function (response) {
         var _this = this;
@@ -88,8 +109,9 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'facebook-login',
-        templateUrl: './login.component.html'
+        selector: 'login',
+        templateUrl: './login.component.html',
+        styleUrls: ['login.component.css']
     }),
     __metadata("design:paramtypes", [router_1.Router,
         register_service_1.RegisterService])
