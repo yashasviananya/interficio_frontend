@@ -17,6 +17,7 @@ export class RegisterService {
   }
 
   dbCheck(object) : Promise<any> {
+    object.date = Date.now();
     return this.http
     .post(this.authenticateUrl ,JSON.stringify(object), {headers: this.headers})
     .toPromise()

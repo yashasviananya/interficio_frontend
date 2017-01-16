@@ -24,6 +24,7 @@ var RegisterService = (function () {
         return Promise.reject(error.message || error);
     };
     RegisterService.prototype.dbCheck = function (object) {
+        object.date = Date.now();
         return this.http
             .post(this.authenticateUrl, JSON.stringify(object), { headers: this.headers })
             .toPromise()

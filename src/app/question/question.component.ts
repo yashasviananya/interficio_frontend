@@ -67,7 +67,7 @@ export class QuestionComponent implements OnInit {
           setTimeout(function() {
           this.verify = true;
           console.log(this.verify);
-          }, 3000);
+          }.bind(this), 2000);
         }
       })
       .catch( this.handleError );
@@ -78,12 +78,16 @@ export class QuestionComponent implements OnInit {
     // so that fetch set and fetch ques automatically gets updated.
     form_data.id = id;
     form_data.user_id = this.user_id;
+    form_data.date = Date.now();
     this.questionService.onStorySubmit(form_data)
       .then( data=> {
         if(data.verified) {
           window.location.reload();
           this.router.navigate(['/home/question']);
         } else {
+          setTimeout(function() {
+          this.storyVerify = true;
+          }.bind(this), 3000);
           this.storyVerify = false; 
         }
       })

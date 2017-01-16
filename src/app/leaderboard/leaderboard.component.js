@@ -15,20 +15,50 @@ var LeaderBoardComponent = (function () {
     function LeaderBoardComponent(router, questionService) {
         this.router = router;
         this.questionService = questionService;
+        this.list_users = 0;
+        this.prevButton = false;
+        this.nextButton = true;
+        this.fetchUserData = function (data) {
+            var _this = this;
+            this.questionService.fetchScore(data)
+                .then(function (data) {
+                console.log('data---', data);
+                _this.array_length = data.length;
+                _this.users = data;
+                if (_this.array_length < 10) {
+                    _this.nextButton = false;
+                }
+            })
+                .catch(this.handleError);
+        };
+        this.performAction = function (btn) {
+            if (btn.param === 'prevbtn' && this.list_users >= 10) {
+                this.nextButton = true;
+                this.list_users = this.list_users - 10;
+            }
+            else if (btn.param === 'nextbtn') {
+                this.prevButton = true;
+                this.list_users = this.list_users + 10;
+            }
+            if (this.list_users < 10) {
+                this.prevButton = false;
+            }
+            this.fetchUserData(this.list_users);
+        };
     }
     LeaderBoardComponent.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
     LeaderBoardComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.questionService.fetchScore()
-            .then(function (data) {
-            console.log(data);
-            _this.users = data;
-        })
-            .catch(this.handleError);
-        // this.users = [{ name: 'piyush',score: 10},{ name: 'swetank',score: 20},{name : 'akash', score: 30},{name: 'himanshu',score: 50}];
+        this.fetchUserData(this.list_users);
+    };
+    LeaderBoardComponent.prototype.onClickNext = function () {
+        console.log("NEXT---");
+        this.performAction({ param: 'nextbtn' });
+    };
+    LeaderBoardComponent.prototype.onClickPrev = function () {
+        this.performAction({ param: 'prevbtn' });
     };
     return LeaderBoardComponent;
 }());

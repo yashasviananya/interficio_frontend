@@ -17,6 +17,10 @@ export class LeaderBoardComponent implements OnInit {
   }
   
   private users: Object;
+  private list_users = 0;
+  private prevButton = false;
+  private nextButton = true;
+  private array_length: any;
 
   constructor(
     private router: Router,
@@ -24,14 +28,44 @@ export class LeaderBoardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.questionService.fetchScore()
-      .then( data=> {
-        console.log(data);
-        this.users = data;
-      })
-      .catch( this.handleError );
-    // this.users = [{ name: 'piyush',score: 10},{ name: 'swetank',score: 20},{name : 'akash', score: 30},{name: 'himanshu',score: 50}];
+    this.fetchUserData(this.list_users);
+  }
 
+  fetchUserData = function(data) {
+    this.questionService.fetchScore(data)
+      .then( data => {
+        console.log('data---',data);
+        this.array_length = data.length;
+        this.users = data;
+        if(this.array_length  < 10) {
+          this.nextButton = false;
+        }
+      })
+      .catch( this.handleError);
+  }
+
+
+  performAction = function (btn) {
+    if (btn.param === 'prevbtn' && this.list_users >= 10) {
+      this.nextButton = true;
+      this.list_users = this.list_users - 10;
+    } else if (btn.param === 'nextbtn') {
+      this.prevButton = true;
+      this.list_users = this.list_users + 10;
+    }
+  if(this.list_users < 10) {
+   this.prevButton = false;
+  }
+  this.fetchUserData(this.list_users);
+  };
+
+  onClickNext() {
+    console.log("NEXT---");
+    this.performAction({param: 'nextbtn'});
+  }
+
+  onClickPrev() {
+    this.performAction({param: 'prevbtn'});
   }
 
 }

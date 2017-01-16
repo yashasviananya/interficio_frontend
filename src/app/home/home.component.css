@@ -199,6 +199,7 @@ md-list-item a {
 .log-out {
   position: relative;
   left: 860px;
+  cursor: pointer;
 }
 
 .sidebar {

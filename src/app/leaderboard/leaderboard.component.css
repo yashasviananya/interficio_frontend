@@ -4,5 +4,15 @@
   padding-bottom: 18px;
 }
 
+#prevbtn {
+    position: absolute;
+    left: 40%;
+}
+
+#nextbtn {
+    position: absolute;
+    left: 50%;
+}
+
 .list-item { background: green; }
 .list-item:nth-child(odd) { background: red; }

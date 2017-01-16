@@ -1,6 +1,8 @@
 <div class = "header">
-<div [innerHTML] = "setObj.title" class = "title"></div>
-<md-card class = "card" style = "width:82%;margin-left: 7%;margin-top:4%">
+<div layout="row" layout-align="center center">
+  <div  [innerHTML] = "setObj.title" class = "title"></div>
+</div>
+<md-card class = "card" style = "width:82%;margin-left: 7%;margin-top:3%">
   <md-card-content>
     <p class= "desc" [innerHTML] = "setObj.description"></p> <br>
     <form #storyForm="ngForm" (ngSubmit)="onStorySubmit(storyForm.value, setObj.id)">
@@ -9,7 +11,7 @@
         <button md-raised-button color = "accent" style = "background-color: black;"> Submit </button>
         <!--<button md-raised-button color="warn" style = "margin-left: 10px;"> Hint </button> -->
       </section>
-        <p *ngIf = '!storyVerify' class = "text"> Wrong answer </p>
+        <p *ngIf = '!storyVerify' class = "story-text" style = "margin-top: 3px;"> Wrong answer </p>
     </form>
  </md-card-content>
 </md-card>
@@ -24,7 +26,7 @@
         <md-input placeholder="Answer" name="answer" type = "text" style="width: 20%" required ngModel></md-input>
           <button md-raised-button color = "accent" style = "background-color: black;margin-left: 20px;"> Submit </button>
       </div>
-      <p [hidden]="verify" *ngIf = 'question.id == question_id && !verify' class = "text"> Wrong answer </p>
+      <p *ngIf = 'question.id == question_id && !verify' class = "text"> Wrong answer </p>
     </form>
   </md-card-content>
 </md-card>

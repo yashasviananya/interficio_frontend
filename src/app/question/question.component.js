@@ -63,7 +63,7 @@ var QuestionComponent = (function () {
                 setTimeout(function () {
                     this.verify = true;
                     console.log(this.verify);
-                }, 3000);
+                }.bind(_this), 2000);
             }
         })
             .catch(this.handleError);
@@ -74,6 +74,7 @@ var QuestionComponent = (function () {
         // so that fetch set and fetch ques automatically gets updated.
         form_data.id = id;
         form_data.user_id = this.user_id;
+        form_data.date = Date.now();
         this.questionService.onStorySubmit(form_data)
             .then(function (data) {
             if (data.verified) {
@@ -81,6 +82,9 @@ var QuestionComponent = (function () {
                 _this.router.navigate(['/home/question']);
             }
             else {
+                setTimeout(function () {
+                    this.storyVerify = true;
+                }.bind(_this), 3000);
                 _this.storyVerify = false;
             }
         })

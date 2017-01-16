@@ -6,6 +6,16 @@
     margin-right: 98px;
 }
 
+.story-text {
+  color: #333;
+  font-size: 22px;
+  text-align: center;
+  font-family: 'MyWebFont';
+  position: relative;
+  left: 3px;
+  top: 5px;
+}
+
 @font-face {
   font-family: 'MyWebFont';
   src:  url('src/assets/skins/lightgray/fonts/heading.woff') format('woff');
