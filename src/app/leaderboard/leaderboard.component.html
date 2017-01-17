@@ -1,20 +1,39 @@
-<div class = "leader-board">
-      <md-list>
-        <md-list-item layout = "row" layout-align = "space-around center" class = "list-item" style = "background-color: #ffffff;" *ngFor="let user of users">
-           <br>
-           <md-divider style = "color: rgba(0, 0, 0, 0.26)"></md-divider>
-           <!--<div >-->
-             <p style = "color: rgba(0, 0, 0, 0.63)"> {{ user.name }} </p>
-             <p class = "text"> {{ user.story_id }} </p>
-             <p class = "text"> {{ user.score }} </p>
-             <p> {{ user.date }} </p>
-           <!--</div>-->
-           <md-divider style = "color: rgba(0, 0, 0, 0.26)"></md-divider>
-           <br>
-        </md-list-item>
-      </md-list>
+  <md-card style = "width:70%;margin-left:10%;margin-top: 3%;">
+    <md-card-content style = "width: 86%;margin-left: 7%">
+      <table border=1 frame=void rules=rows style="width:100%">
+        <thead>
+          <th style="padding:16px;" class="text-center">
+            Name
+          </th>
+          <th class="text-center">
+            Set number
+          </th>
+          <th class="text-center">
+            Score
+          </th>
+          <th class="text-center">
+            Date and time
+          </th>
+        </thead>
+        <tbody style="text-align:-webkit-center">
+        <tr *ngFor="let user of users">
+         <td class = "data">
+            {{user.name}}
+            </td>
+          <td class = "data">
+            {{user.story_id}}
+          </td>
+          <td class = "data">
+            {{user.score}}
+          </td>
+          <td class = "data">
+            {{user.date}}
+          </td>
+        </tbody>
+      </table>
+    </md-card-content>
+  </md-card>
   <br>
   <button md-raised-button id="prevbtn" [disabled]='!this.prevButton' (click)='onClickPrev()'>PREV</button>
   <button md-raised-button id="nextbtn" [disabled]='!this.nextButton' (click)='onClickNext()'>NEXT</button>
  <br>
-</div>
