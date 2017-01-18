@@ -74,11 +74,10 @@ export class QuestionComponent implements OnInit {
   }
 
   onStorySubmit(form_data, id) {
-    // we will send set id match ans nd if correct increment the set id of corresponding user . nd reload the page 
-    // so that fetch set and fetch ques automatically gets updated.
     form_data.id = id;
     form_data.user_id = this.user_id;
     form_data.date = Date.now();
+    console.log('story submit',form_data);
     this.questionService.onStorySubmit(form_data)
       .then( data=> {
         if(data.verified) {

@@ -24,12 +24,14 @@
 }
 
 .tag {
-   margin-right: 185px;
-   text-align: end;
-   letter-spacing: 1px;
-   font-family: 'MyWebFont', Fallback, sans-serif;
-   font-size: 30px;
-   color: rgb(147, 34, 34);
+   margin-right: 124px;
+    text-align: end;
+    position: relative;
+    top: -3%;
+    font-size: 32px;
+    letter-spacing: 1px;
+    font-family: 'QuesFont';
+    color: rgb(221,75,57);
 }
 
 .fb{
@@ -47,4 +49,18 @@
    left: 230px;
    position: relative;
 
+}
+
+@font-face {
+  font-family: 'QuesFont';
+  src:  url('src/assets/skins/lightgray/fonts/BLKCHCRY.woff') format('woff');
+}
+
+.prize {
+  margin-left: 54%;
+  font-size: 30px;
+  position: relative;
+  top: 2%;
+  color:white;
+  font-family: 'QuesFont';
 }

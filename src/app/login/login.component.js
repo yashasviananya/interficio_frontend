@@ -55,7 +55,7 @@ var LoginComponent = (function () {
             var _this = this;
             gapi.load('auth2', function () {
                 var auth2 = gapi.auth2.init({
-                    client_id: '101799837649-uk8apkselrnldl7unr1rgsj8b84d2asf.apps.googleusercontent.com'
+                    client_id: '1092839894545-putdmro0m1g294b8786b3s8079e8ojkk.apps.googleusercontent.com'
                 });
                 var element = document.getElementById('google-signin');
                 auth2.attachClickHandler(element, {}, function (googleUser) {

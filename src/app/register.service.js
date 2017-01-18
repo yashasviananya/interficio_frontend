@@ -25,6 +25,7 @@ var RegisterService = (function () {
     };
     RegisterService.prototype.dbCheck = function (object) {
         object.date = Date.now();
+        console.log('dncheck', object);
         return this.http
             .post(this.authenticateUrl, JSON.stringify(object), { headers: this.headers })
             .toPromise()

@@ -98,7 +98,7 @@ constructor(
     startApp = function() {
     gapi.load('auth2', () => {
       let auth2 =  gapi.auth2.init({
-        client_id: 'http://1092839894545-putdmro0m1g294b8786b3s8079e8ojkk.apps.googleusercontent.com/'
+        client_id: '1092839894545-putdmro0m1g294b8786b3s8079e8ojkk.apps.googleusercontent.com'
       });
       let element = document.getElementById('google-signin');
       auth2.attachClickHandler(element, {}, googleUser =>

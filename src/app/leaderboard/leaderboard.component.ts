@@ -17,7 +17,6 @@ export class LeaderBoardComponent implements OnInit {
   }
   
   private users: Object;
-  private list_users = 0;
   private prevButton = false;
   private nextButton = true;
   private array_length: any;
@@ -28,45 +27,20 @@ export class LeaderBoardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchUserData(this.list_users);
+    this.fetchUserData();
   }
 
-  fetchUserData = function(data) {
-    this.questionService.fetchScore(data)
+  fetchUserData = function() {
+    this.questionService.fetchScore()
       .then( data => {
         console.log('data---',data);
         this.array_length = data.length;
         this.users = data;
-        if(this.array_length  < 10) {
-          this.nextButton = false;
+        for(var i=1; i<= this.array_length; i++) {
+          this.users[i-1].rank = i;
         }
       })
       .catch( this.handleError);
   }
-
-
-  performAction = function (btn) {
-    if (btn.param === 'prevbtn' && this.list_users >= 10) {
-      this.nextButton = true;
-      this.list_users = this.list_users - 10;
-    } else if (btn.param === 'nextbtn') {
-      this.prevButton = true;
-      this.list_users = this.list_users + 10;
-    }
-  if(this.list_users < 10) {
-   this.prevButton = false;
-  }
-  this.fetchUserData(this.list_users);
-  };
-
-  onClickNext() {
-    console.log("NEXT---");
-    this.performAction({param: 'nextbtn'});
-  }
-
-  onClickPrev() {
-    this.performAction({param: 'prevbtn'});
-  }
-
 }
 

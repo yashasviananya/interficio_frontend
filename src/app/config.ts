@@ -1,3 +1,3 @@
 export const config = Object.freeze({
-  url: 'http://localhost:3008/'
+  url: 'http://35.164.216.143:3008/'
 })

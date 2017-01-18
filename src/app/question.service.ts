@@ -56,9 +56,9 @@ export class QuestionService {
     .catch(this.handleError); 
   }
 
-  fetchScore(data): Promise<any> {
+  fetchScore(): Promise<any> {
     return this.http
-   .get(this.getScoreUrl + '?data=' + data , {headers: this.headers})
+   .get(this.getScoreUrl, {headers: this.headers})
    .toPromise()
    .then(res => res.json())
    .catch(this.handleError);

@@ -15,35 +15,20 @@ var LeaderBoardComponent = (function () {
     function LeaderBoardComponent(router, questionService) {
         this.router = router;
         this.questionService = questionService;
-        this.list_users = 0;
         this.prevButton = false;
         this.nextButton = true;
-        this.fetchUserData = function (data) {
+        this.fetchUserData = function () {
             var _this = this;
-            this.questionService.fetchScore(data)
+            this.questionService.fetchScore()
                 .then(function (data) {
                 console.log('data---', data);
                 _this.array_length = data.length;
                 _this.users = data;
-                if (_this.array_length < 10) {
-                    _this.nextButton = false;
+                for (var i = 1; i <= _this.array_length; i++) {
+                    _this.users[i - 1].rank = i;
                 }
             })
                 .catch(this.handleError);
-        };
-        this.performAction = function (btn) {
-            if (btn.param === 'prevbtn' && this.list_users >= 10) {
-                this.nextButton = true;
-                this.list_users = this.list_users - 10;
-            }
-            else if (btn.param === 'nextbtn') {
-                this.prevButton = true;
-                this.list_users = this.list_users + 10;
-            }
-            if (this.list_users < 10) {
-                this.prevButton = false;
-            }
-            this.fetchUserData(this.list_users);
         };
     }
     LeaderBoardComponent.prototype.handleError = function (error) {
@@ -51,14 +36,7 @@ var LeaderBoardComponent = (function () {
         return Promise.reject(error.message || error);
     };
     LeaderBoardComponent.prototype.ngOnInit = function () {
-        this.fetchUserData(this.list_users);
-    };
-    LeaderBoardComponent.prototype.onClickNext = function () {
-        console.log("NEXT---");
-        this.performAction({ param: 'nextbtn' });
-    };
-    LeaderBoardComponent.prototype.onClickPrev = function () {
-        this.performAction({ param: 'prevbtn' });
+        this.fetchUserData();
     };
     return LeaderBoardComponent;
 }());

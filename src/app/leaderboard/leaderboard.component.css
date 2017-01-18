@@ -21,17 +21,15 @@ th {
   font-size: 18px;
 }
 
-#prevbtn {
-    position: absolute;
-    left: 40%;
-}
-
-#nextbtn {
-    position: absolute;
-    left: 50%;
-}
-
 .data {
     font-size: 17px;
     padding: 8px;
+}
+
+.background {
+background-color: rgb(18,18,18);
+background-size: 100vw 100vh;
+background-attachment: fixed;
+overflow: hidden;
+display: block;
 }
