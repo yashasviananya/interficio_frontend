@@ -35,14 +35,15 @@
 }
 
 .fb{
- width: 18%;
+    width: 18%;
     float: right;
     margin-top: 50px;
     margin-right: 373px;
+    padding: 7px 49px;
 
 }
 
-.google {
+.goog {
     width: 17%;
     float: right;
     margin-top: 100px;

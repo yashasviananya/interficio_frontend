@@ -14,9 +14,13 @@ export class InstructionComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-    
-  }
+  private token;
 
+  ngOnInit() {
+    this.token = localStorage.getItem('token');
+    if(!this.token) {
+      this.router.navigate(['login']);  
+    }
+  }
 }
 

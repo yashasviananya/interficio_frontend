@@ -29,8 +29,14 @@ export class QuestionComponent implements OnInit {
   private question_id;
   private storyVerify = true;
   private user_id;
+  private token;
 
   ngOnInit() {
+
+    this.token = localStorage.getItem('token');
+      if(!this.token) {
+      this.router.navigate(['login']);  
+      }
 
     this.route.params.subscribe(params => {
        this.user_id = params['id']; // (+) converts string 'id' to a number
