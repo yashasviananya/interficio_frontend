@@ -1,8 +1,5 @@
-/*.inst {
-background-image: url('src/assets/img/instruction.jpg');
-background-size: 100vw 100vh;
-background-attachment: fixed;
-height: 45em;
-overflow: hidden;
-display: block;
-}*/
+.inst {
+    background-color: rgb(18,18,18);
+    background-size: 100vw 100vh;
+    height: 44em;
+}
