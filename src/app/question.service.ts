@@ -30,9 +30,9 @@ export class QuestionService {
     .catch(this.handleError);
   }
 
-  fetchQuestion(): Promise<any> {
+  fetchQuestion(set_id): Promise<any> {
     return this.http
-    .get(this.getQuestionUrl , {headers: this.headers})
+    .get(this.getQuestionUrl+ '?set_id_=' + set_id , {headers: this.headers})
     .toPromise()
     .then(res => res.json())
     .catch(this.handleError);

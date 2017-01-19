@@ -46,11 +46,11 @@ export class QuestionComponent implements OnInit {
     this.questionService.fetchSet(this.user_id)
       .then( data=> {
         this.setObj = data;
-        // console.log(this.setObj);
-        this.questionService.fetchQuestion()
+        console.log(this.setObj);
+        this.questionService.fetchQuestion(this.setObj.id)
         .then( data=> {
           this.questionObj = data;
-          // console.log(this.questionObj);
+           console.log(this.questionObj);
         })
       })
       .catch( this.handleError );
