@@ -2,9 +2,10 @@
   background-image: url("src/assets/img/login1.png"); 
   background-size: 100vw 100vh;
   background-attachment: fixed;
-  height: 45em;
+  height: 49em;
   overflow: hidden;
   display: block;
+  padding-top: 98px;
   
 } 
 
@@ -18,16 +19,9 @@
   color: white;
   font-size: 90px;
   letter-spacing: 10px;
-  text-align: end;
-  padding-right: 320px;
-  padding-top: 40px;
 }
 
 .tag {
-   margin-right: 124px;
-    text-align: end;
-    position: relative;
-    top: -3%;
     font-size: 32px;
     letter-spacing: 1px;
     font-family: 'QuesFont';
@@ -36,20 +30,6 @@
 
 .fb{
     width: 18%;
-    float: right;
-    margin-top: 50px;
-    margin-right: 373px;
-    padding: 7px 49px;
-
-}
-
-.goog {
-    width: 17%;
-    float: right;
-    margin-top: 100px;
-   left: 230px;
-   position: relative;
-
 }
 
 @font-face {
@@ -58,10 +38,10 @@
 }
 
 .prize {
-  margin-left: 54%;
   font-size: 30px;
   position: relative;
-  top: 2%;
   color:white;
   font-family: 'QuesFont';
+  top: 60px;
+  right: 15px;
 }
